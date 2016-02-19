@@ -1,20 +1,16 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="${find model_description}/urdf/common.xacro"/>
-  <xacro:include filename="${find model_description}/urdf/materials.xacro"/>
-  <xacro:include filename="${find model_description}/urdf/sensor/camera.urdf.xacro"/>
-  <xacro:include filename="${find model_description}/urdf/sensor/camera.gazebo.xacro"/>
+<robot name="gscam" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <xacro:include filename="$(find model_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find model_description)/urdf/materials.xacro"/>
+  <xacro:include filename="$(find model_description)/urdf/sensor/camera.urdf.xacro"/>
+  <xacro:include filename="$(find model_description)/urdf/sensor/camera.gazebo.xacro"/>
   
   <link name="world"/>
-  <xacro:camera_link_v0 parent_link="world" link_name="camera_frame">
+  <xacro:camera_link_v0 parent="world" name="camera_link">
 	<origin xyz="0 0 1.0" rpy="0 ${M_PI/2} 0"/>
   </xacro:camera_link_v0>
 
-   <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-    </plugin>
-  </gazebo>
- <xacro:gscam_gazebo link_name="camera_frame"/>
+  <xacro:gscam_gazebo name="camera_link"/>
   
 </robot>
