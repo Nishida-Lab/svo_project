@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find model_description)/urdf/common.xacro" />
+  <xacro:include filename="$[find model_description]/urdf/materials.xacro"/>
+  
+  <xacro:macro name="camera_link_v0" params="parent_link link_name *joint_origin">
+	<joint name="${link_name}_joint" type="fixed">
+	  <insert_block name="*joint_origin"/>
+	  <parent link="${parent_link}"/>
+	  <child link="${link_name}"/>
+	</joint>
+	
+	<link name="${link_name}">
+	  <visual>
+		<magerial name="black"/>
+		<geometry>
+		  <mesh filename="package://model_description/meshes/camera.stl"/>
+		</geometry>
+	  </visual>
+	  <collision>
+		<geometry>
+		  <mesh filename="package://model_description/meshes/camera.stl"/>
+		</geometry>
+	  </collision>
+	  <inertia>
+		<mass value="0.07"/>
+		<inertia ixx="0.1" iyy="0.1" izz="0.1"/>
+	  </inertia>
+	</link>
+  </xacro:macro>
+</robot>
