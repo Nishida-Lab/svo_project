@@ -1,16 +1,15 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find model_description)/urdf/common.xacro" />
-  <xacro:include filename="$[find model_description]/urdf/materials.xacro"/>
+  <xacro:include filename="$(find model_description)/urdf/common.xacro"/>
   
-  <xacro:macro name="gscam_gazebo" parames="link_name">
-	<gazebo reference="${link_name}">
+  <xacro:macro name="gscam_gazebo" params="name">
+	<gazebo reference="${name}">
 	  <material>Gazebo/Black</material>
-	  <sensor type="camera" name="gscam">
+	  <sensor type="camera" name="gscam1">
 		<update_rate>60.0</update_rate>
-		<camera name="gscam">
-          <horizontal_fov>1.570796</horizontal_fov>
+		<camera name="head">
+          <horizontal_fov>${M_PI/2}</horizontal_fov>
           <image>
 			<width>744</width>
 			<height>480</height>
@@ -26,14 +25,14 @@
 			<stddev>0.00</stddev>
           </noise>
 		</camera>
-		<plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+		<plugin name="${name}_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>60.0</updateRate>
           <cameraName>gscam</cameraName>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-          <frameName>${link_name}</frameName>
-          <hackBaseline>0.0</hackBaseline>
+          <frameName>${name}</frameName>
+          <hackBaseline>0.07</hackBaseline>
           <distortionK1>0.0</distortionK1>
           <distortionK2>0.0</distortionK2>
           <distortionK3>0.0</distortionK3>
