@@ -6,7 +6,7 @@
 
   <maintainer email="groadpg@gmail.com">RyodoTanaka</maintainer>
   <license>BSD</license>
-  <url type="repository">http://github.com/Nishida-Lab/motoman_project</url>
+  <url type="repository">http://github.com/Nishida-Lab/svo_project</url>
   
   <buildtool_depend>catkin</buildtool_depend>
   <run_depend>ros_control</run_depend>
