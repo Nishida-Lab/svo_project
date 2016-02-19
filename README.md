@@ -4,7 +4,7 @@
 SVOアルゴリズムを試す際に、fpsの高いカメラが現実では手に入りにくいとの声がありましたので、  
 Gazebo上で要求を満たすものを作ってみました。  
 
-移動物体等は必要に応じて追懐してゆく予定です。
+移動物体等は必要に応じて追加してゆく予定です。
 
 ### 使い方
 #### 前提
@@ -16,6 +16,7 @@ ROSがインストールされている必要があります。
    cd <catkin_ws>/src/
    git clone https://github.com/Nishida-Lab/svo_project.git
    ```
+   
 2. rosdep
    ```bash
    cd <catkin_ws>
